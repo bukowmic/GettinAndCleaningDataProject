@@ -1,4 +1,5 @@
 subjectName -> the id of a volunteer
+
 activityLabel >- name of a performed activity
 
 A mean statistic was computed for a subject and activity for every variable texted below. Before making the mean all variables were normalized and bounded between [-1,1] so they do not posses any unit.
