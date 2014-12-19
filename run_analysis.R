@@ -15,7 +15,7 @@ if(sum(.packages(all.available = TRUE) == "dplyr")){
   library(dplyr)
 }
 
-#Reading training and test data, as well as headers, from txt files.
+#Reading training and test data from txt files and merging them.
 train.tmp.data <- read.table("UCI\ HAR\ Dataset\\train\\X_train.txt")
 train.tmp.data <- tbl_df(train.tmp.data)
 
@@ -24,7 +24,7 @@ test.tmp.data <- tbl_df(test.tmp.data)
 
 merged.data <- rbind_list(train.tmp.data, test.tmp.data)
 
-#2. Extracting only mean and standard deviation by reading variables names
+#2. Reading the headers data and using it to extract only mean and standard deviation by reading variables names
 headers.data <- read.table("UCI\ HAR\ Dataset\\features.txt")
 headers.data <- tbl_df(headers.data)
 tmp <- headers.data %>%
@@ -74,7 +74,7 @@ final.mean.data <- final.data %>%
   summarise_each(funs(mean))
 
 # Exporting final data to txt file
-
+write.table(final.mean.data, file="getdata16_peer_project_final_data.txt", col.names=FALSE)
 
 # Making free space by deleting not used data
 rm(train.tmp.data) 
